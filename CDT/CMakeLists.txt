@@ -20,14 +20,14 @@ set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 option(CDT_USE_BOOST
     "If enabled Boost is used as a fall-back for features missing in C++98
     and performance tweaks (e.g., using boost::flat_set)"
-    OFF)
+    ON)
 
 option(CDT_USE_AS_COMPILED_LIBRARY
     "If enabled templates for float and double will be instantiated and compiled into a library")
 
 option(CDT_USE_64_BIT_INDEX_TYPE
     "If enabled 64bits are used to store vertex/triangle index types. Otherwise 32bits are used (up to 4.2bn items)"
-    OFF)
+    ON)
 
 option(CDT_ENABLE_TESTING
     "If enabled tests target will ge generated)"
@@ -51,7 +51,8 @@ endif()
 
 # Use boost for c++98 versions of c++11 containers or for Boost::rtree
 if(CDT_USE_BOOST)
-    find_package(Boost REQUIRED)
+    # find_package(Boost REQUIRED)
+    # Relies on parent module to provide boost headers
 endif()
 
 
@@ -129,7 +130,8 @@ target_compile_definitions(
 )
 
 if(CDT_USE_BOOST)
-    target_link_libraries(${PROJECT_NAME} INTERFACE Boost::boost)
+    # target_link_libraries(${PROJECT_NAME} INTERFACE Boost::boost)
+    # Relies on parent module to provide boost headers
 endif()
 
 
