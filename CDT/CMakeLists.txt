@@ -43,9 +43,9 @@ else()
     set(CDT_USE_BOOST ON)
 endif()
 
-message(STATUS "CDT_USE_BOOST is ${CDT_USE_BOOST}")
-message(STATUS "CDT_USE_AS_COMPILED_LIBRARY is ${CDT_USE_AS_COMPILED_LIBRARY}")
-message(STATUS "CDT_USE_64_BIT_INDEX_TYPE is ${CDT_USE_64_BIT_INDEX_TYPE}")
+# message(STATUS "CDT_USE_BOOST is ${CDT_USE_BOOST}")
+# message(STATUS "CDT_USE_AS_COMPILED_LIBRARY is ${CDT_USE_AS_COMPILED_LIBRARY}")
+# message(STATUS "CDT_USE_64_BIT_INDEX_TYPE is ${CDT_USE_64_BIT_INDEX_TYPE}")
 
 # Use boost for c++98 versions of c++11 containers or for Boost::rtree
 if(CDT_USE_BOOST)
@@ -162,7 +162,7 @@ install(EXPORT ${PROJECT_NAME}Config NAMESPACE CDT:: DESTINATION cmake)
 # documentation
 # ------------
 
-find_package(Doxygen)
+#[[find_package(Doxygen)
 if(DOXYGEN_FOUND)
     message(STATUS "Doxygen found: adding documentation target.")
     set(DOXYGEN_EXCLUDE_PATTERNS
@@ -190,4 +190,4 @@ if(DOXYGEN_FOUND)
                 ${PROJECT_SOURCE_DIR}/../docs/images
                 ${DOXYGEN_OUTPUT_DIRECTORY}/html/images
     )
-endif(DOXYGEN_FOUND)
+endif(DOXYGEN_FOUND)]]
