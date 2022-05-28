@@ -26,6 +26,22 @@ V2d<T> V2d<T>::make(const T x, const T y)
     return out;
 }
 
+template <typename T>
+V2d<T>::V2d()
+{}
+
+template <typename T>
+V2d<T>::V2d(const T& x_, const T& y_)
+    : x(x_)
+    , y(y_)
+{}
+
+template <typename T>
+V2d<T>::V2d(T&& x_, T&& y_) noexcept
+    : x(std::move(x_))
+    , y(std::move(y_))
+{}
+
 //*****************************************************************************
 // Box2d
 //*****************************************************************************

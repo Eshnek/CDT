@@ -101,7 +101,13 @@ struct CDT_EXPORT V2d
     T y; ///< Y-coordinate
 
     /// Create vector from X and Y coordinates
-    static V2d make(T x, T y);
+    static V2d make(const T x, const T y);
+
+    V2d();
+
+    V2d(const T& x_, const T& y_);
+
+    V2d(T&& x_, T&& y_) noexcept;
 };
 
 /// X- coordinate getter for V2d

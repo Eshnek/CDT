@@ -376,6 +376,8 @@ private:
         NodeSplitDirection::Enum dir;
         coord_type distSq;
         NearestTask()
+            : min()
+            , max()
         {}
         NearestTask(
             const node_index node,
