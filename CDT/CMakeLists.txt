@@ -29,10 +29,6 @@ option(CDT_USE_64_BIT_INDEX_TYPE
     "If enabled 64bits are used to store vertex/triangle index types. Otherwise 32bits are used (up to 4.2bn items)"
     ON)
 
-option(CDT_ENABLE_TESTING
-    "If enabled tests target will ge generated)"
-    OFF)
-
 # check if Boost is needed
 if(cxx_std_11 IN_LIST CMAKE_CXX_COMPILE_FEATURES)
     # Work-around as AppleClang 11 defaults to c++98 by default
