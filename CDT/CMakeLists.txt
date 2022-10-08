@@ -45,10 +45,9 @@ else()
     set(CDT_USE_BOOST ON)
 endif()
 
-message(STATUS "CDT_USE_BOOST is ${CDT_USE_BOOST}")
-message(STATUS "CDT_USE_AS_COMPILED_LIBRARY is ${CDT_USE_AS_COMPILED_LIBRARY}")
-message(STATUS "CDT_USE_64_BIT_INDEX_TYPE is ${CDT_USE_64_BIT_INDEX_TYPE}")
-message(STATUS "CDT_ENABLE_TESTING is ${CDT_ENABLE_TESTING}")
+# message(STATUS "CDT_USE_BOOST is ${CDT_USE_BOOST}")
+# message(STATUS "CDT_USE_AS_COMPILED_LIBRARY is ${CDT_USE_AS_COMPILED_LIBRARY}")
+# message(STATUS "CDT_USE_64_BIT_INDEX_TYPE is ${CDT_USE_64_BIT_INDEX_TYPE}")
 
 # Use boost for c++98 versions of c++11 containers or for Boost::rtree
 if(CDT_USE_BOOST)
@@ -167,10 +166,7 @@ install(EXPORT ${PROJECT_NAME}Config NAMESPACE CDT:: DESTINATION cmake)
 # documentation
 # ------------
 
-# work-around to detect custom-doxygen
-#set(DOXYGEN_EXECUTABLE /usr/local/bin/doxygen)
-
-find_package(Doxygen 1.9)
+#[[find_package(Doxygen)
 if(DOXYGEN_FOUND)
     message(STATUS "Doxygen found: adding documentation target.")
     set(DOXYGEN_EXCLUDE_PATTERNS
@@ -224,30 +220,4 @@ if(DOXYGEN_FOUND)
                 ${PROJECT_SOURCE_DIR}/../docs/images
                 ${DOXYGEN_OUTPUT_DIRECTORY}/html/images
     )
-endif(DOXYGEN_FOUND)
-
-
-# ------------
-# tests
-# ------------
-
-if(CDT_ENABLE_TESTING)
-    include(CTest)
-    enable_testing()
-    # add Catch2
-    set(Catch2_directory ${PROJECT_SOURCE_DIR}/tests/Catch2)
-    add_subdirectory(${Catch2_directory})
-    set(CMAKE_MODULE_PATH "${Catch2_directory}/extras" ${CMAKE_MODULE_PATH})
-    set(TEST_TARGET_NAME ${PROJECT_NAME}-tests)
-    add_executable(${TEST_TARGET_NAME})
-    set_property(TARGET ${TEST_TARGET_NAME} PROPERTY CXX_STANDARD 17)
-    target_sources(${TEST_TARGET_NAME} PRIVATE tests/cdt.test.cpp)
-    target_link_libraries(
-        ${TEST_TARGET_NAME}
-        PRIVATE
-            Catch2::Catch2WithMain
-            CDT::CDT
-    )
-    include(Catch)
-    catch_discover_tests(${TEST_TARGET_NAME} WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/tests")
-endif()
+endif(DOXYGEN_FOUND)]]
